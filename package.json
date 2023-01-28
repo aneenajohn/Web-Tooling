@@ -1,0 +1,23 @@
+{
+  "name": "web-tooling",
+  "version": "1.0.0",
+  "description": "This repo contains the plugings built on Web Tooling workshop by Vilva Athiban",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aneenajohn/Web-Tooling.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aneenajohn/Web-Tooling/issues"
+  },
+  "homepage": "https://github.com/aneenajohn/Web-Tooling#readme",
+  "dependencies": {
+    "storybook": "^6.5.16"
+  }
+}
