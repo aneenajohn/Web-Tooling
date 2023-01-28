@@ -8,8 +8,12 @@ export const Camera = () => {
 
     useEffect(() => {
         navigator.permissions.query({ name: "camera" }).then((permissionStatus) => {
-            console.log("permissionStatus", permissionStatus);
-            setPermission(permissionStatus.state);
+            console.log("permissionStatus", permissionStatus); 
+            setPermission(permissionStatus.state); // NOTE: Can have 3 states: prompt, denied, granted
+            // sample obj 
+            // name: "video_capture"
+            // onchange: null
+            // state: "denied"
         })
     
         navigator.mediaDevices
@@ -22,7 +26,7 @@ export const Camera = () => {
             })
     }, [])
 
-    const takeScreenshot = () => {
+    const captureImage = () => {
         const canvas = document.createElement("canvas");
         const context = canvas.getContext("2d");
         canvas.width = cameraRef.current.videoWidth;
@@ -30,7 +34,6 @@ export const Camera = () => {
 
         // draw the video frame to the canvas
         context.drawImage(cameraRef.current, 0, 0, canvas.width, canvas.height);
-
 
         // get the image data URL
         const imageDataUrl = canvas.toDataURL("image/png");
@@ -41,7 +44,7 @@ export const Camera = () => {
     <div>
         {!imgUrl ?(
             permission === "granted" ? (
-                <video ref={cameraRef} onClick={takeScreenshot} />
+                <video ref={cameraRef} onClick={captureImage} />
             ): (<h2>Camera permission denied</h2>)
         ) : (
             <img src={imgUrl} alt="Captured pic" />
